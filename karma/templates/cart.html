@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Start Banner Area -->
+    <section class="banner-area organic-breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+                <div class="col-first">
+                    <h1>Shopping Cart</h1>
+                    <nav class="d-flex align-items-center">
+                        <a href="/">Home<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="{{url_for('shop.cart')}}">Cart</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Banner Area -->
+
+    <!--================Cart Area =================-->
+    {% if data %}
+    <section class="cart_area">
+        <center>
+            <div class="trackingtable">
+                <div class="cart_inner">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Product</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Quantity</th>
+                                    <th scope="col">Total</th>
+                                </tr>
+                            </thead>
+                            {% for items in data %}
+                            <tbody>
+                                <!-- Row Start -->
+                                <tr>
+                                    <td>
+                                        <div class="media">
+                                            <div class="d-flex">
+                                                <img class="cart_image" src="..{{data[items]['image']}}" alt="">
+                                            </div>
+                                            <div class="media-body">
+                                                <p>{{data[items]['productname']}}</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <h5>&#8377;{{data[items]['price']}}</h5>
+                                    </td>
+                                    <td>
+                                        <div class="product_count">
+                                            <input type="text" name="qty" maxlength="12" value="{{data[items]['count']}}" title="Quantity:"
+                                                class="input-text qty" disabled>
+                                                <form action="{{url_for('additem.incdecqty')}}" method="POST">
+                                                    <input type="hidden" name="productid" value={{items}}>
+                                                    <input type="hidden" name="type" value="increment">
+                                                    <button class="increase items-count"><i class="lnr lnr-chevron-up"></i></button>
+                                                </form>
+                                                <form action="{{url_for('additem.incdecqty')}}" method="POST">
+                                                    <input type="hidden" name="productid" value={{items}}>
+                                                    <input type="hidden" name="type" value="decrement">
+                                                    <button class="reduced items-count"><i class="lnr lnr-chevron-down"></i></button>
+                                                </form>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <h5>&#8377;{{data[items]['count']*data[items]['price']}}</h5>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                                <tr>
+                                    <td></td>
+                                    <td colspan="2">
+                                        <h4 style="font-weight: 600;">TOTAL AMOUNT</h4>
+                                    </td>
+                                    <td>
+                                        <h4 style="font-weight: 600;">&#8377;{{totalprice}}</h4>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div style="display: flex; justify-content: flex-end;">
+                            <a class="gray_btn" href="{{url_for('blog.index')}}">Apply</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <button type="submit" class="btn btn-dark">Close Coupon</button>
+                        </div>
+                        <br>
+                        <div class="checkout_btn_inner" style="display: flex; justify-content: flex-end;">
+                                <a class="gray_btn" href="{{url_for('blog.index')}}">Continue Shopping</a>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <form action="{{url_for('payment.orderSummary')}}" method="POST" >
+                                    <input type="hidden" name="totalprice" value={{totalprice}}>
+                                    <input type="hidden" name="payment" value="notpaymentpage">
+                                    <button type="submit" class="btn btn-dark ">&nbsp; Place Order &nbsp;</button>
+                                </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </center>
+    </div>
+</div>
+
+        {% else %}
+        <h1 class="p-3"><center>You Don't Have any Product In Your Cart</center></h1> <br> <br>
+        <div class="checkout_btn_inner d-flex justify-content-center">
+            <a class="btn btn-dark" href="{{url_for('blog.index')}}">CONTINUE SHOPPING</a>
+        </div>
+    </section>
+    {% endif %}
+    <!--================End Cart Area =================-->
+    {% endblock %}

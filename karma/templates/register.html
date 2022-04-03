@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<!-- Start Banner Area -->
+	<section class="banner-area organic-breadcrumb">
+		<div class="container">
+			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+				<div class="col-first">
+					<h1>Register</h1>
+					<nav class="d-flex align-items-center">
+						<a href="/">Home<span class="lnr lnr-arrow-right"></span></a>
+						<a href="{{url_for('pages.login')}}">Login</a>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Banner Area -->
+
+	<!--================Login Box Area =================-->
+	<section class="login_box_area section_gap">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="login_box_img">
+						<img class="img-fluid" src="../static/img/login.jpg" alt="">
+						<div class="hover">
+							<h4>New to our website?</h4>
+							<p>There are advances being made in science and technology everyday, and a good example of this is the</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div class="login_form_inner pt-4">
+						<h3>Register Please</h3>
+						<form class="row login_form" action="{{url_for('pages.register')}}" method="POST" id="contactForm" novalidate="novalidate">
+							{{ form.hidden_tag() }}
+							<div class="col-md-12 form-group">
+								{{ form.email(class="form-control") }}
+								</div>
+							<div class="col-md-12 form-group">
+								{{ form.username(class="form-control") }}
+								</div>
+							<div class="col-md-12 form-group">
+								{{ form.address(class="form-control") }}
+								</div>
+							<div class="col-md-12 form-group">
+								{{ form.password(class="form-control") }}
+								</div>
+							<div class="col-md-12 form-group">
+								{{ form.confirmpassword(class="form-control") }}
+								</div>
+							<div class="col-md-12 form-group">
+								{{ form.submit(class="primary-btn") }}
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--================End Login Box Area =================-->
+
+{% endblock %}

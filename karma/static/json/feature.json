@@ -1,0 +1,22 @@
+[
+    {
+        "image": "../static/img/features/f-icon1.png",
+        "name": "Free Delivery",
+        "text":"Free Shipping on all order"
+    },
+    {
+        "image": "../static/img/features/f-icon2.png",
+        "name": "Return Policy",
+        "text":"Free Shipping on all order"
+    },
+    {
+        "image": "../static/img/features/f-icon3.png",
+        "name": "24/7 Support",
+        "text":"Free Shipping on all order"
+    },
+    {
+        "image": "../static/img/features/f-icon4.png",
+        "name": "Secure Payment",
+        "text":"Free Shipping on all order"
+    }
+]

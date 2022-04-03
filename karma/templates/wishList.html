@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Start Banner Area -->
+    <section class="banner-area organic-breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+                <div class="col-first">
+                    <h1>Wishlist 💖</h1>
+                    <nav class="d-flex align-items-center">
+                        <a href="/">Home<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="{{url_for('shop.cart')}}">Cart</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Banner Area -->
+
+    <!--================WishList Area =================-->
+<section class="cart_area">
+{% if data %}
+<center>
+    <div class="trackingtable">
+        <div class="cart_inner">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Product</th>
+                            <th scope="col">Price</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    {% for items in data %}
+                    <tbody>
+                        <!-- Row Start -->
+                        <tr>
+                            <td>
+                                <div class="media">
+                                    <div class="d-flex">
+                                        <img class="cart_image" src="..{{data[items]['image']}}" alt="">
+                                    </div>
+                                    <div class="media-body">
+                                        <p>{{data[items]['productname']}}</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <h5>&#8377;{{data[items]['price']}}</h5>
+                            </td>
+                            <td>
+                                <form method="POST" action="{{url_for('additem.deleteFromWishList')}}">
+                                    <input type="hidden" name="productid" value={{items}}>
+                                    <button class="btn btn-dark">Remove</button>
+                                </form>
+                            </td>
+                            <td>
+                                <form method="POST" action="{{url_for('additem.addtocart')}}">
+                                    <input type="hidden" name="movetocart" value="true">
+                                    <input type="hidden" name="productid" value={{items}}>
+                                    <button class="btn btn-dark">Cart</button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <center>
+                    <a class="gray_btn" href="{{url_for('blog.index')}}">Continue Shopping</a>
+                </center>
+            </div>
+        </div>
+    </div>
+    </center>
+        {% else %}
+        <h3><center>You Don't Have any Product In Your Wish List</center></h3> <br> <br>
+        <div class="checkout_btn_inner d-flex justify-content-center">
+            <a class="btn btn-dark" href="{{url_for('blog.index')}}">CONTINUE SHOPPING</a>
+        </div>
+        {% endif %}
+    </section>
+    <!--================End Cart Area =================-->
+    {% endblock %}
