@@ -1,3 +1,5 @@
-# Sample Web Application  
+#E-Commerce Web Application
 
-Web application written in Python using `flask` and deployed on Heroku. Detailed tutorial of the code in this repository can be found [here](https://towardsdatascience.com/create-and-deploy-a-simple-web-application-with-flask-and-heroku-103d867298eb).
+i) Developed an ecommerce web application using integrated APIs 
+ii) Having functionalities like Payment gateway, Check-out page, Cart and Wishlist etc..
+iii) Tech Used - HTML, CSS, JavaScript, Python, Flask, Bootstrap 
