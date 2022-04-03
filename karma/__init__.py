@@ -3,10 +3,13 @@ import smtplib
 import os 
 import pyrebase
 
+#Email and password
 
 sender_email = os.environ.get('senderEmail')
 email_pass = os.environ.get('emailPass')
 
+#Connecting to firebase 
+  
 
 firebaseConfiguration = {
   'apiKey': "AIzaSyDhLCXmpKUKgRizqz1C8zm569Z48vF4zzo",
