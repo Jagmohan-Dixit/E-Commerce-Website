@@ -62,8 +62,8 @@ def login():
             session['id'] = login['localId'] 
             # if (user['address'] != None):
             #         # formatting address in session to display it in ordersummary page
-            session['address'] = user['address']['name'] + "," + user['address']['address'] + "," + user['address']['city'] + ',' + user['address']['state'] + "," + str(user['address']['pincode'])
-            # session['address'] = user['address'] 
+            # session['address'] = user['address']['name'] + "," + user['address']['address'] + "," + user['address']['city'] + ',' + user['address']['state'] + "," + str(user['address']['pincode'])
+            session['address'] = user['address'] 
             return redirect(url_for('blog.index')) 
             # except:
             #     return render_template('login.html', form=form, error = "Bad credentials. Please try again")
